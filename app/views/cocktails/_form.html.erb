@@ -1,0 +1,7 @@
+<%= form_for(@cocktail) do |c| %>
+  <div class="form-group">
+    <%= c.label :name %>
+    <%= c.text_field :name, class: 'form-control' %>
+  </div>
+  <%= c.submit class: 'btn btn-primary' %>
+<% end %>
