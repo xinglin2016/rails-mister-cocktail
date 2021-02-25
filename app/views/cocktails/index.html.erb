@@ -6,6 +6,10 @@
   </div>
 </div>
 
+<!-- app/views/articles/index.html.erb -->
+<%= cl_image_tag("plszl5fwgj59vhnqje4v",
+      width: 400, height: 300, crop: :fill) %>
+
 <ul id="cocktails">
   <% @cocktails.each do |cocktail| %>
     <li><%= link_to cocktail.name, cocktail_path(cocktail.id) %></li>
