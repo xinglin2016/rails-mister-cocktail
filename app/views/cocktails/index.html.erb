@@ -6,17 +6,12 @@
   </div>
 </div>
 
-<ul id="cocktails">
+<div class="container">
   <% @cocktails.each do |cocktail| %>
-    <li>
-      <%= link_to cocktail.name, cocktail_path(cocktail.id) %>
-      <% if cocktail.photo.attached? %>
-        <%= cl_image_tag cocktail.photo.key, height: 300, width: 400, crop: :fill %>
-      <% end %>
-    </li>
+    <div class="cards">
+      <div class="card-category" style="background-image: <%= cl_image_tag cocktail.photo.key, height: 300, width: 400, crop: :fill %>">
+        <%= link_to cocktail.name, cocktail_path(cocktail.id) %>
+      </div>
+    </div>
   <% end %>
-</ul>
-
-<!-- <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
-  Breakfast
-</div> -->
+</div>
