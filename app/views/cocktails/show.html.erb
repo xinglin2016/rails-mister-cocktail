@@ -1,29 +1,31 @@
-<h1><%= @cocktail.name %></h1>
+<div class="container">
+  <h1><%= @cocktail.name %></h1>
 
-<p>Doses:</p>
+  <p>Doses:</p>
 
-<ul class="list-group">
-  <% @cocktail.doses.each do |dose| %>
-    <li class="list-group-item"><%= dose.description %> <%= dose.ingredient.name %></li>
-    <%= link_to dose_path(dose), method: :delete, data: { confirm: "Delete #{dose.description}?" } do %>
-      <i class="bi bi-x-circle"></i>
+  <ul class="list-group">
+    <% @cocktail.doses.each do |dose| %>
+      <li class="list-group-item"><%= dose.description %> <%= dose.ingredient.name %></li>
+      <%= link_to dose_path(dose), method: :delete, data: { confirm: "Delete #{dose.description}?" } do %>
+        <i class="bi bi-x-circle"></i>
+      <% end %>
     <% end %>
+  </ul>
+
+  <% if @cocktail.photo.attached? %>
+    <%= cl_image_tag @cocktail.photo.key, height: 300, width: 400, crop: :fill %>
   <% end %>
-</ul>
 
-<% if @cocktail.photo.attached? %>
-  <%= cl_image_tag @cocktail.photo.key, height: 300, width: 400, crop: :fill %>
-<% end %>
+  <%= link_to 'Add dose', new_cocktail_dose_path(@cocktail) %>
 
-<%= link_to 'Add dose', new_cocktail_dose_path(@cocktail) %>
+  <hr>
+  <%= link_to new_cocktail_path do %>
+    <i class="fa fa-history"></i> Add a new cocktail
+  <% end %>
 
-<hr>
-<%= link_to new_cocktail_path do %>
-  <i class="fa fa-history"></i> Add a new cocktail
-<% end %>
-
-<hr>
-<%= link_to cocktails_path do %>
-  <i class="fa fa-history"></i> Back to all cocktails
-<% end %>
+  <hr>
+  <%= link_to cocktails_path do %>
+    <i class="fa fa-history"></i> Back to all cocktails
+  <% end %>
+</div>
 

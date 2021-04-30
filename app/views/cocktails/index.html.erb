@@ -1,7 +1,6 @@
 <div class="container">
   <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= image_path "cocktails.jpg" %>');">
       <h1>The Mister Cocktails</h1>
-      <%= link_to "Add a cocktail", new_cocktail_path, class: "btn btn-primary btn-lg" %>
   </div>
 
   <div class="cocktail-cards">
@@ -13,5 +12,7 @@
       <% end %>
     <% end %>
   </div>
+
+  <%= link_to "Add a cocktail", new_cocktail_path, class: "btn btn-primary btn-lg" %>
 </div>
 
