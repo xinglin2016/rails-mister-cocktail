@@ -43,10 +43,13 @@ def cocktail_ingredients
   return JSON.parse(cocktail_serialized)["drinks"][0]["strIngredient1"]
 end
 
-3.times do
+6.times do
   cocktail = Cocktail.new(
     name: cocktail_name
     )
+  cocktail.save!
+  file = URI.open(cocktail_picture)
+  cocktail.photo.attach(io: file, filename: 'cocktails.jpg', content_type: 'image/jpg')
   cocktail.save!
   # file = URI.open(dog[0]["url"])
   # breed.photo.attach(io: file, filename: 'breed_pic.jpg', content_type: 'image/jpg')
