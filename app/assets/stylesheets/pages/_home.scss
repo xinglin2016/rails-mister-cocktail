@@ -17,6 +17,10 @@
   grid-gap: 16px;
 }
 
+.container h1 {
+  color: blue;
+}
+
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {
   .cards {
