@@ -45,7 +45,8 @@ end
 
 6.times do
   cocktail = Cocktail.new(
-    name: cocktail_name
+    name: cocktail_name,
+    description: cocktail_description
     )
   cocktail.save!
   file = URI.open(cocktail_picture)
