@@ -24,15 +24,21 @@
   padding-bottom: 8px;
   text-align: center;
   margin: auto;
+  text-decoration: none;
 }
 
 .cocktail-name {
   text-align: center;
   padding: auto;
   margin:auto;
+  text-decoration: none;
 }
 
 .cocktail-name:hover {
+  text-decoration: none;
+}
+
+a {
   text-decoration: none;
 }
 
