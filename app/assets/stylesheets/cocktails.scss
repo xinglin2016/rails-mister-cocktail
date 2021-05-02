@@ -23,6 +23,17 @@
   width: 330px;
   padding-bottom: 8px;
   text-align: center;
+  margin: auto;
+}
+
+.cocktail-name {
+  text-align: center;
+  padding: auto;
+  margin:auto;
+}
+
+.cocktail-name:hover {
+  text-decoration: none;
 }
 
 // Smallest device

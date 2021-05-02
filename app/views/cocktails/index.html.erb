@@ -7,7 +7,9 @@
     <% @cocktails.reverse_each do |cocktail|%>
       <%= link_to cocktail_path(cocktail.id) do %>
         <div class="cocktail-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url( <%= cl_image_path cocktail.photo.key if cocktail.photo.attached? %>)">
-          <%= cocktail.name %>
+          <div class="cocktail-name">
+            <%= cocktail.name %>
+          </div>
         </div>
       <% end %>
     <% end %>
