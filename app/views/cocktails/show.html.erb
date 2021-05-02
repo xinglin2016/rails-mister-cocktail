@@ -16,16 +16,11 @@
     <%= cl_image_tag @cocktail.photo.key, height: 300, width: 400, crop: :fill %>
   <% end %>
 
-  <%= link_to 'Add dose', new_cocktail_dose_path(@cocktail) %>
+  <br>
+  <%= link_to 'Add dose', new_cocktail_dose_path(@cocktail), class: "btn btn-outline-secondary" %>
 
-  <hr>
-  <%= link_to new_cocktail_path do %>
-    <i class="fa fa-history"></i> Add a new cocktail
-  <% end %>
+  <br>
+  <%= link_to "Add a cocktail", new_cocktail_path, class: "btn btn-outline-secondary" %>
 
-  <hr>
-  <%= link_to cocktails_path do %>
-    <i class="fa fa-history"></i> Back to all cocktails
-  <% end %>
-</div>
-
+  <br>
+  <%= link_to "Back to all cocktails", cocktails_path, class: "btn btn-outline-secondary" %>
