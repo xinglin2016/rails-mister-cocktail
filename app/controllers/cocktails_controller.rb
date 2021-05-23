@@ -1,8 +1,14 @@
 class CocktailsController < ApplicationController
   before_action :set_cocktail, only: [:show, :destroy]
+  skip_before_action :authenticate_user!
 
   def index
     @cocktails = Cocktail.all
+    if params[:query].present?
+      @cocktails = policy_scope(Cocktail).search_by_title_and_category_and_console(params[:query])
+    else
+      @cocktails = policy_scope(Cocktail)
+    end
   end
 
   def show
@@ -15,6 +21,9 @@ class CocktailsController < ApplicationController
 
   def create
     @cocktail = Cocktail.new(cocktail_params)
+    @cocktail.user = current_user
+    authorize @cocktail
+
     if @cocktail.save
       redirect_to cocktail_path(@cocktail)
     else
