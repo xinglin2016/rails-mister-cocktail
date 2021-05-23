@@ -1,8 +1,14 @@
 class CocktailsController < ApplicationController
   before_action :set_cocktail, only: [:show, :destroy]
+  skip_before_action :authenticate_user!
 
   def index
     @cocktails = Cocktail.all
+    if params[:query].present?
+      @cocktails = policy_scope(Cocktail).search_by_title_and_category_and_console(params[:query])
+    else
+      @cocktails = policy_scope(Cocktail)
+    end
   end
 
   def show

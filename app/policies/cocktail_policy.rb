@@ -5,17 +5,19 @@ class CocktailPolicy < ApplicationPolicy
     end
 
     def create?
-      return true
+      true
+    end
+
+    def show?
+      true
     end
 
     def update?
-      record.user == user
-      # - record: the restaurant passed to the `authorize` method in controller
-      # - user:   the `current_user` signed in with Devise.
+      user == record.user || user.admin
     end
 
     def destroy?
-      record.user == user
+      user == record.user || user.admin
     end
   end
 end
