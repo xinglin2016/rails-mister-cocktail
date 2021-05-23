@@ -20,7 +20,10 @@
   <%= link_to 'Add dose', new_cocktail_dose_path(@cocktail), class: "btn btn-outline-secondary" %>
 
   <br>
-  <%= link_to "Add a cocktail", new_cocktail_path, class: "btn btn-outline-secondary" %>
+  <% if policy(Restaurant).create? %>
+    <%= link_to "Add a cocktail", new_cocktail_path, class: "btn btn-outline-secondary" %>
+  <% end %>
 
   <br>
   <%= link_to "Back to all cocktails", cocktails_path, class: "btn btn-outline-secondary" %>
+</div>
