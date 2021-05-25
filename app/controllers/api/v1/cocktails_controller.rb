@@ -6,7 +6,6 @@ class Api::V1::CocktailsController < Api::V1::BaseController
   end
 
   def show
-    authorize @cocktail
   end
 
   private
