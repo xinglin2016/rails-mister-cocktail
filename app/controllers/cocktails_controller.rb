@@ -13,6 +13,7 @@ class CocktailsController < ApplicationController
 
   def show
     @dose = Dose.new
+    authorize @cocktail
   end
 
   def new
