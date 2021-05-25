@@ -1,5 +1,5 @@
 class CocktailsController < ApplicationController
-  before_action :set_cocktail, only: [:show, :destroy]
+  before_action :set_cocktail, only: [:show, :destroy, :update, :edit]
   skip_before_action :authenticate_user!
 
   def index
@@ -12,17 +12,20 @@ class CocktailsController < ApplicationController
   end
 
   def show
+    @doses = @cocktail.doses
     @dose = Dose.new
   end
 
+  def edit
+  end
+
   def new
-    @cocktail = Cocktail.new
+    @cocktail = current_user.cocktails.new
+    authorize @cocktail
   end
 
   def create
-    @cocktail = Cocktail.new(cocktail_params)
-    @cocktail.user = current_user
-    authorize @cocktail
+    @cocktail = current_user.cocktails.new(cocktail_params)
 
     if @cocktail.save
       redirect_to cocktail_path(@cocktail)
@@ -40,6 +43,7 @@ class CocktailsController < ApplicationController
 
   def set_cocktail
     @cocktail = Cocktail.find(params[:id])
+    authorize @cocktail
   end
 
   def cocktail_params
