@@ -1,5 +1,5 @@
 class Api::V1::CocktailsController < Api::V1::BaseController
-  before_action :set_cocktail, only: [ :show, :update ]
+  before_action :set_cocktail, only: [ :show, :update, :destroy ]
   acts_as_token_authentication_handler_for User, except: [ :index, :show ]
 
   def create
@@ -26,6 +26,12 @@ class Api::V1::CocktailsController < Api::V1::BaseController
     else
       render_error
     end
+  end
+
+  def destroy
+    @cocktail.destroy
+    head :no_content
+    # No need to create a `destroy.json.jbuilder` view
   end
 
   private
