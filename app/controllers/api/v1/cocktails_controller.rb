@@ -24,12 +24,12 @@ class Api::V1::CocktailsController < Api::V1::BaseController
     authorize @cocktail  # For Pundit
   end
 
-  def restaurant_params
-    params.require(:restaurant).permit(:name, :address)
+  def cocktail_params
+    params.require(:cocktail).permit(:name, :description)
   end
 
   def render_error
-    render json: { errors: @restaurant.errors.full_messages },
+    render json: { errors: @cocktail.errors.full_messages },
       status: :unprocessable_entity
   end
 end
