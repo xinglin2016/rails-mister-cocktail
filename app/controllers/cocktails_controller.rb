@@ -20,13 +20,12 @@ class CocktailsController < ApplicationController
   end
 
   def new
-    @cocktail = Cocktail.new
+    @cocktail = current_user.cocktails.new
     authorize @cocktail
   end
 
   def create
     @cocktail = current_user.cocktails.new(cocktail_params)
-    authorize @cocktail
 
     if @cocktail.save
       redirect_to cocktail_path(@cocktail)
