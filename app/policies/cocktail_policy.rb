@@ -13,11 +13,11 @@ class CocktailPolicy < ApplicationPolicy
     end
 
     def update?
-      user == record.user || user.admin
+      record.user == user
     end
 
     def destroy?
-      user == record.user || user.admin
+      record.user == user
     end
   end
 end
