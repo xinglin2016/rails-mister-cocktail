@@ -2,6 +2,17 @@ class Api::V1::CocktailsController < Api::V1::BaseController
   before_action :set_cocktail, only: [ :show, :update ]
   acts_as_token_authentication_handler_for User, except: [ :index, :show ]
 
+  def create
+    @cocktail = Cocktail.new(cocktail_params)
+    @cocktail.user = current_user
+    authorize @cocktail
+    if @cocktail.save
+      render :show, status: :created
+    else
+      render_error
+    end
+  end
+
   def index
     @cocktails = policy_scope(Cocktail)
   end

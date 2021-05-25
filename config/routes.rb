@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   # delete '/doses/:id', to: 'doses#destroy'
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
-      resources :cocktails, only: [ :index, :show, :update ]
+      resources :cocktails, only: [ :index, :show, :update, :create ]
     end
   end
 end
