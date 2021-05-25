@@ -19,6 +19,16 @@ class CocktailsController < ApplicationController
   def edit
   end
 
+  def update
+    @cocktail.update(cocktail_params)
+
+    if @cocktail.save
+      redirect_to @cocktail
+    else
+      render :edit
+    end
+  end
+
   def new
     @cocktail = current_user.cocktails.new
     authorize @cocktail
@@ -47,6 +57,6 @@ class CocktailsController < ApplicationController
   end
 
   def cocktail_params
-    params.require(:cocktail).permit(:name, :photo)
+    params.require(:cocktail).permit(:name, :photo, :description, :user_id)
   end
 end
