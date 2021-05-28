@@ -1,5 +1,5 @@
 class CocktailsController < ApplicationController
-  before_action :set_cocktail, only: [:show, :destroy, :update, :edit]
+  before_action :set_cocktail, only: [:show, :update, :edit]
   skip_before_action :authenticate_user!
 
   def index
@@ -45,8 +45,10 @@ class CocktailsController < ApplicationController
   end
 
   def destroy
+    @cocktail = Cocktail.find(params[:id])
     @cocktail.destroy
     redirect_to cocktails_path
+    authorize @cocktail
   end
 
   private
